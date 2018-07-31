@@ -68,3 +68,11 @@ SELECT DISTINCT model_title
 FROM car_models
 WHERE make_code = 'NISSAN' AND model_code = 'GT-R';
 --time: 18ms
+
+CREATE INDEX idx_make_code ON car_models (make_code);
+--time: 418ms
+
+SELECT make_code, model_code, model_title, year
+FROM car_models
+WHERE make_code = 'LAM';
+--time: 1ms
