@@ -21,4 +21,11 @@ CREATE database indexed_cars
 \i scripts/car_model_data.sql;
 \i scripts/car_model_data.sql;
 
---time: \d+
+--time: ~330ms each
+
+SELECT COUNT(*)
+FROM car_models;
+
+SELECT DISTINCT make_title
+FROM car_models
+WHERE make_code = 'LAM';
