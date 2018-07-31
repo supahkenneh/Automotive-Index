@@ -7,6 +7,7 @@ CREATE database indexed_cars
   OWNER = indexed_cars_user;
 
 \c indexed_cars;
+\timing
 
 \i scripts/car_models.sql;
 
@@ -53,26 +54,30 @@ WHERE year = 2010;
 --time: 28ms
 
 --create index on make_title
-CREATE INDEX idx_make_title ON car_models (make_title);
---time: 1576ms
+CREATE INDEX idx_make_title ON car_models (make_code);
+--time: 420ms
 
 SELECT DISTINCT make_title 
 FROM car_models
 WHERE make_code = 'LAM';
---time: 22.7ms
-
-CREATE INDEX idx_model_title ON car_models (model_title);
---time: 879.8ms
+--time: 1ms
 
 SELECT DISTINCT model_title
 FROM car_models
 WHERE make_code = 'NISSAN' AND model_code = 'GT-R';
---time: 18ms
-
-CREATE INDEX idx_make_code ON car_models (make_code);
---time: 418ms
+--time: 1.4ms
 
 SELECT make_code, model_code, model_title, year
 FROM car_models
 WHERE make_code = 'LAM';
---time: 1ms
+--time: 0.9ms
+
+SELECT *
+FROM car_models
+WHERE year BETWEEN 2010 AND 2015;
+--time: 66ms
+
+SELECT *
+FROM car_models
+WHERE year = 2010;
+--time: 28.9ms
