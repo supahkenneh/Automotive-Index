@@ -51,3 +51,20 @@ SELECT *
 FROM car_models
 WHERE year = 2010;
 --time: 28ms
+
+--create index on make_title
+CREATE INDEX idx_make_title ON car_models (make_title);
+--time: 1576ms
+
+SELECT DISTINCT make_title 
+FROM car_models
+WHERE make_code = 'LAM';
+--time: 22.7ms
+
+CREATE INDEX idx_model_title ON car_models (model_title);
+--time: 879.8ms
+
+SELECT DISTINCT model_title
+FROM car_models
+WHERE make_code = 'NISSAN' AND model_code = 'GT-R';
+--time: 18ms
