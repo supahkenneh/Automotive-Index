@@ -29,3 +29,15 @@ FROM car_models;
 SELECT DISTINCT make_title
 FROM car_models
 WHERE make_code = 'LAM';
+--time: 19.5ms
+
+SELECT DISTINCT model_title
+FROM car_models
+WHERE make_code = 'NISSAN' 
+AND model_code = 'GT-R';
+--time: 22ms
+
+SELECT make_code, model_code, model_title, year
+FROM car_models
+WHERE make_code = 'LAM';
+--time: 
