@@ -22,7 +22,7 @@ CREATE database indexed_cars
 \i scripts/car_model_data.sql;
 \i scripts/car_model_data.sql;
 
---time: ~330ms each
+--time: 330ms each
 
 SELECT COUNT(*)
 FROM car_models;
